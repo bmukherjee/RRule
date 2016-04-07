@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rrule-engine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../../main/resources/RuleConfig.xsd">
+	<properties>
+		<entry key="" />
+	</properties>
+	<rules>
+		<rule name="">
+			<properties>
+				<entry key="abab" >ghgh</entry>
+			</properties>
+			<composite>
+				<rule class="" name="" or-next="false" side-effect="none" />
+				<rule class="" name="" side-effect="both" />
+			</composite>
+		</rule>
+		<rule name="">
+			<composite>
+				<rule class="" name="" or-next="false" side-effect="none" />
+			</composite>
+		</rule>
+		<rule name="" class=""></rule>
+	</rules>
+</rrule-engine>

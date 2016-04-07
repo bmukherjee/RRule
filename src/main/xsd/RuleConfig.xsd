@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="properties-type">
+		<xs:sequence>
+			<xs:element name="entry" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:anySimpleType">
+							<xs:attribute name="key" use="required" type="xs:string"></xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="simple-rule-type">
+		<xs:sequence>
+			<xs:element name="properties" type="properties-type"
+				minOccurs="0">
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+		<xs:attribute name="class" type="xs:string"></xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="composite-rule-type">
+		<xs:sequence>
+			<xs:element name="properties" type="properties-type"
+				minOccurs="0">
+			</xs:element>
+			<xs:element name="composite" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="rule" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="simple-rule-type">
+										<xs:attribute name="or-next" type="xs:boolean"
+											default="false">
+										</xs:attribute>
+										<xs:attribute name="side-effect" default="none">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="none" />
+													<xs:enumeration value="pass" />
+													<xs:enumeration value="fail" />
+													<xs:enumeration value="both" />
+												</xs:restriction>
+											</xs:simpleType>
+
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+		<xs:attribute name="class" type="xs:string"></xs:attribute>
+	</xs:complexType>
+	<xs:element name="rrule-engine">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="properties" type="properties-type"
+					minOccurs="0">
+
+				</xs:element>
+				<xs:element name="rules">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="rule" type="composite-rule-type"
+								maxOccurs="unbounded">
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

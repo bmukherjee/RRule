@@ -1,0 +1,7 @@
+RRule is a simple rule engine with a great deal of customizability. After getting tired of having to implement this same pattern on a variety of startup projects, I decided to make it a shared solution.
+
+There are two principal ways to use RRule. The simplest is to create your own rules by implementing the Rule Interface.
+A configuration based solution involves creating a XML file to define composite rules as a OR/AND combination of simpler rules. A schema is provided for the XML and the test caseprovides a working example.
+
+Feature requests, questions and comments are to be sent to javapro19@gmail.com.
+
